@@ -26,7 +26,7 @@ import { splitFactions, primaryPartyKey, allPartyDefs } from '../src/lib/parties
 /** @typedef {import('../src/lib/types.js').VoteRecord} VoteRecord */
 /** @typedef {import('../src/lib/types.js').BillAI} BillAI */
 /** @typedef {Record<string, string>} Row */
-/** @typedef {BillAI & { hash: string, v: number }} AiCacheEntry */
+/** @typedef {BillAI & { hash: string, argHash: string, v: number }} AiCacheEntry */
 
 const ROOT = join(import.meta.dirname, '..');
 const RAW_DIR = join(ROOT, 'data', 'raw');
@@ -53,7 +53,7 @@ function readContent(id) {
  */
 function freshAi(input, entry) {
   if (!entry || entry.v !== PROMPT_VERSION || aiHash(input) !== entry.hash) return null;
-  const { hash: _h, v: _v, ...ai } = entry;
+  const { hash: _h, argHash: _a, v: _v, ...ai } = entry;
   return ai;
 }
 

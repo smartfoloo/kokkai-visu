@@ -10,8 +10,9 @@
     "check": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json",
     "data": "node scripts/build-data.js",
     "data:content": "node scripts/fetch-content.js",
+    "data:deliberation": "node scripts/fetch-deliberation.js",
     "data:summaries": "node scripts/summarize.js",
-    "data:all": "node scripts/build-data.js && node scripts/fetch-content.js && node scripts/build-data.js && node scripts/summarize.js && node scripts/build-data.js",
+    "data:all": "node scripts/build-data.js && node scripts/fetch-content.js && node scripts/fetch-deliberation.js && node scripts/build-data.js && node scripts/summarize.js && node scripts/build-data.js",
     "test": "vitest run"
   },
   "devDependencies": {

@@ -44,7 +44,7 @@ export const STEPS = ['提出', '議論中', '成立'];
  */
 export function simpleStatus(b) {
   if (b.finalState === '成立' || b.stage === '成立') {
-    return { label: '成立しました', tone: 'done', step: 3 };
+    return { label: '成立済み', tone: 'done', step: 3 };
   }
   if (b.finalState === '廃案' || b.stage === '廃案') {
     return { label: '見送り・廃案', tone: 'failed', step: 3 };

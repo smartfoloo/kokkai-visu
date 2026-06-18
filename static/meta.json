@@ -1,9 +1,9 @@
 {
   "session": 221,
   "sessionType": "常会",
-  "updatedAt": "2026-06-17",
-  "generatedAt": "2026-06-17T11:54:40.604Z",
-  "billCount": 85,
+  "updatedAt": "2026-06-18",
+  "generatedAt": "2026-06-18T13:50:24.943Z",
+  "billCount": 89,
   "categories": [
     "税制",
     "社会保障",
@@ -101,8 +101,8 @@
   ],
   "heatThresholds": {
     "提出": {
-      "warm": 68,
-      "hot": 135
+      "warm": 11,
+      "hot": 21
     },
     "委員会審議": {
       "warm": 11,
@@ -113,8 +113,8 @@
       "hot": 21
     },
     "参議院": {
-      "warm": 36,
-      "hot": 72
+      "warm": 26,
+      "hot": 51
     },
     "成立": {
       "warm": 11,

@@ -116,36 +116,94 @@
           </p>
         </header>
 
+        <!-- inline **bold** renderer (XSS-safe, no @html) -->
+        {#snippet rich(/** @type {string} */ text)}{#each boldSegments(text) as seg}{#if seg.bold}<strong
+                class="font-semibold text-ink">{seg.text}</strong>{:else}{seg.text}{/if}{/each}{/snippet}
+
         <!-- AI explanation (みらい議会 style) -->
         {#if bill.ai}
-          {#each bill.ai.sections as s}
+          {#if bill.ai.oneLiner}
+            <p class="text-sm leading-relaxed text-ink [overflow-wrap:anywhere]">
+              {@render rich(bill.ai.oneLiner)}
+            </p>
+          {/if}
+
+          <!-- 概要 -->
+          {#if bill.ai.description.length}
             <section>
-              <h3 class="mb-1.5 text-[15px] font-bold leading-snug text-ink [overflow-wrap:anywhere]">
-                {s.heading}
-              </h3>
-              {#if s.body}
-                <p
-                  class="whitespace-pre-line text-sm leading-relaxed text-ink-soft [overflow-wrap:anywhere]"
-                >{#each boldSegments(s.body) as seg}{#if seg.bold}<strong
-                        class="font-semibold text-ink">{seg.text}</strong
-                      >{:else}{seg.text}{/if}{/each}</p>
-              {/if}
-              {#if s.bullets.length}
-                <ul class="mt-2 space-y-1.5">
-                  {#each s.bullets as b}
-                    <li class="flex gap-2 text-sm leading-relaxed text-ink-soft">
-                      <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent/60"></span>
-                      <span class="[overflow-wrap:anywhere]"
-                        >{#each boldSegments(b) as seg}{#if seg.bold}<strong
-                              class="font-semibold text-ink">{seg.text}</strong
-                            >{:else}{seg.text}{/if}{/each}</span
-                      >
-                    </li>
-                  {/each}
-                </ul>
-              {/if}
+              <h3 class="mb-1.5 text-[15px] font-bold leading-snug text-ink">概要</h3>
+              <ul class="space-y-1.5">
+                {#each bill.ai.description as b}
+                  <li class="flex gap-2 text-sm leading-relaxed text-ink-soft">
+                    <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent/60"></span>
+                    <span class="[overflow-wrap:anywhere]">{@render rich(b)}</span>
+                  </li>
+                {/each}
+              </ul>
             </section>
-          {/each}
+          {/if}
+
+          <!-- なぜ重要か -->
+          {#if bill.ai.whyItMatters}
+            <section>
+              <h3 class="mb-1.5 text-[15px] font-bold leading-snug text-ink">なぜ重要か</h3>
+              <p class="text-sm leading-relaxed text-ink-soft [overflow-wrap:anywhere]">
+                {@render rich(bill.ai.whyItMatters)}
+              </p>
+            </section>
+          {/if}
+
+          <!-- 変わること（前 → 後） -->
+          {#if bill.ai.beforeAfter.length}
+            <section>
+              <h3 class="mb-2 text-[15px] font-bold leading-snug text-ink">変わること</h3>
+              <div class="space-y-2">
+                {#each bill.ai.beforeAfter as ba}
+                  <div class="rounded-card border border-line bg-surface-2 p-3 text-sm leading-relaxed">
+                    <div class="flex items-start gap-2">
+                      <span class="mt-0.5 shrink-0 rounded px-1.5 py-0.5 text-[11px] font-medium text-ink-faint bg-canvas-deep">現状</span>
+                      <span class="text-ink-soft [overflow-wrap:anywhere]">{@render rich(ba.before)}</span>
+                    </div>
+                    <div class="my-1 text-center text-ink-faint" aria-hidden="true">↓</div>
+                    <div class="flex items-start gap-2">
+                      <span class="mt-0.5 shrink-0 rounded px-1.5 py-0.5 text-[11px] font-medium text-accent-deep bg-accent-soft">改正後</span>
+                      <span class="text-ink [overflow-wrap:anywhere]">{@render rich(ba.after)}</span>
+                    </div>
+                  </div>
+                {/each}
+              </div>
+            </section>
+          {/if}
+
+          <!-- 賛成・反対の論点（実際の審議・採決にもとづく） -->
+          {#if bill.ai.arguments && bill.ai.arguments.for.length && bill.ai.arguments.against.length}
+            {@const args = bill.ai.arguments}
+            <section>
+              <h3 class="mb-1 text-[15px] font-bold leading-snug text-ink">賛成・反対の論点</h3>
+              <p class="mb-2 text-[11px] text-ink-faint">実際の国会審議・採決での発言にもとづきます。</p>
+              <div class="grid grid-cols-1 gap-3 sm:grid-cols-2">
+                {#each [{ key: 'for', label: '賛成の論点', dot: 'bg-accent', points: args.for }, { key: 'against', label: '反対の論点', dot: 'bg-amber', points: args.against }] as col}
+                  {#if col.points.length}
+                    <div class="rounded-card border border-line bg-surface-2 p-3">
+                      <p class="mb-2 flex items-center gap-1.5 text-xs font-semibold text-ink">
+                        <span class="h-2 w-2 shrink-0 rounded-full {col.dot}"></span>{col.label}
+                      </p>
+                      <ul class="space-y-2">
+                        {#each col.points as p}
+                          <li class="text-sm leading-relaxed text-ink-soft [overflow-wrap:anywhere]">
+                            {@render rich(p.point)}
+                            {#if p.party}
+                              <span class="ml-1 inline-block align-middle tag" style={chipStyle(p.party)}>{p.party}</span>
+                            {/if}
+                          </li>
+                        {/each}
+                      </ul>
+                    </div>
+                  {/if}
+                {/each}
+              </div>
+            </section>
+          {/if}
 
           {#if bill.ai.sources.length}
             <section>

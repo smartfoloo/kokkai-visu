@@ -46,18 +46,31 @@ export const COLUMNS = [
  */
 
 /**
- * @typedef {object} AiSection
- * @property {string} heading
- * @property {string} body
- * @property {string[]} bullets
+ * A single argument point, drawn from a real Diet deliberation record or vote.
+ * @typedef {object} ArgPoint
+ * @property {string} point the for/against point, as actually stated in the records
+ * @property {string} [party] 会派 (faction) the point is attributed to
+ * @property {'衆' | '参'} [house]
  */
 
 /**
- * LLM-generated beginner-friendly explanation (みらい議会 style).
+ * A before/after change pair derived from the official outline.
+ * @typedef {object} BeforeAfter
+ * @property {string} before 現状 (current state)
+ * @property {string} after 改正後 (after the bill)
+ */
+
+/**
+ * LLM-generated beginner-friendly explanation (みらい議会 style). Sections 1–3 are
+ * generated from the official outline; `arguments` is evidence-gated — non-null only
+ * when real NDL deliberation speeches and/or recorded votes back it.
  * @typedef {object} BillAI
  * @property {string} plainTitle easy-to-understand title rewrite
  * @property {string} oneLiner one-sentence summary
- * @property {AiSection[]} sections headed explanations with optional bullets
+ * @property {string[]} description what the bill does, 3–10 bullets
+ * @property {string} whyItMatters why it matters (short paragraph)
+ * @property {BeforeAfter[]} beforeAfter before/after pairs ([] if not derivable)
+ * @property {{ for: ArgPoint[], against: ArgPoint[] } | null} arguments for/against points, gated on real sources
  * @property {{ title: string, url: string }[]} sources grounding references
  */
 

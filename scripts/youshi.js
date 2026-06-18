@@ -32,8 +32,10 @@ const SHIFT = /施行(期日|日|する|に)/;
  */
 export function parseYoushi(text) {
   if (!text) return null;
-  // The shugiin "本文情報一覧" index page is navigation, not an outline.
-  if (/本文情報一覧|照会できる情報の一覧/.test(text)) return null;
+  // The shugiin listing page is navigation, not an outline. Key off "照会できる情報の一覧"
+  // (unique to that page) — NOT the "議案本文情報一覧" breadcrumb that real 本文/要綱 pages
+  // also carry, which would falsely reject genuine content.
+  if (/照会できる情報の一覧/.test(text)) return null;
 
   let lines = text
     .split('\n')
