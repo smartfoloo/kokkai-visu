@@ -1,8 +1,8 @@
 {
   "session": 221,
   "sessionType": "常会",
-  "updatedAt": "2026-06-19",
-  "generatedAt": "2026-06-19T11:50:15.121Z",
+  "updatedAt": "2026-06-20",
+  "generatedAt": "2026-06-20T15:02:22.666Z",
   "billCount": 89,
   "categories": [
     "税制",
@@ -102,19 +102,19 @@
   "heatThresholds": {
     "提出": {
       "warm": 11,
-      "hot": 21
+      "hot": 23
     },
     "委員会審議": {
-      "warm": 11,
-      "hot": 21
+      "warm": 12,
+      "hot": 24
     },
     "本会議": {
       "warm": 11,
       "hot": 21
     },
     "参議院": {
-      "warm": 36,
-      "hot": 72
+      "warm": 38,
+      "hot": 75
     },
     "成立": {
       "warm": 11,

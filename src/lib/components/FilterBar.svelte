@@ -1,5 +1,6 @@
 <script>
   import ThemeToggle from '$lib/components/ThemeToggle.svelte';
+  import TranslateMenu from '$lib/components/TranslateMenu.svelte';
 
   /** @typedef {import('$lib/types.js').Meta} Meta */
 
@@ -57,9 +58,10 @@
     </div>
 
     <div class="ml-auto flex items-center gap-2.5">
-      <span class="text-xs text-ink-faint tabular-nums">
+      <span class="text-xs text-ink-faint tabular-nums notranslate">
         {shown} / {total} 件
       </span>
+      <TranslateMenu />
       <ThemeToggle />
     </div>
   </div>

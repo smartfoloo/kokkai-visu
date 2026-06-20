@@ -65,6 +65,10 @@ jobs:
 
       - uses: actions/configure-pages@v5
         id: pages
+        with:
+          # Auto-enable Pages (build via GitHub Actions) if it isn't already,
+          # instead of failing with "Get Pages site failed / Not Found".
+          enablement: true
 
       - name: Build site
         run: npm run build

@@ -16,6 +16,33 @@
         } catch (e) {}
       })();
     </script>
+    <!-- Auto-detect the device language on first visit and pre-seed Google Translate -->
+    <script>
+      (function () {
+        try {
+          var SUPPORTED = {
+            en: 1, 'zh-CN': 1, 'zh-TW': 1, ko: 1, es: 1, fr: 1,
+            de: 1, pt: 1, ru: 1, ar: 1, hi: 1, vi: 1
+          };
+          var hasCookie = /(?:^|;\s*)googtrans=/.test(document.cookie);
+          var detected = localStorage.getItem('lang-autodetected');
+          if (hasCookie || detected) return;
+          var nav = (navigator.language || 'en');
+          var lc = nav.toLowerCase();
+          var lang = null;
+          if (lc.indexOf('ja') === 0) {
+            lang = null; // device is Japanese — keep the original
+          } else if (lc.indexOf('zh') === 0) {
+            lang = /tw|hant|hk|mo/.test(lc) ? 'zh-TW' : 'zh-CN';
+          } else {
+            var base = nav.split('-')[0];
+            lang = SUPPORTED[nav] ? nav : SUPPORTED[base] ? base : 'en';
+          }
+          if (lang) document.cookie = 'googtrans=/ja/' + lang + ';path=/';
+          localStorage.setItem('lang-autodetected', '1');
+        } catch (e) {}
+      })();
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -39,5 +66,21 @@
   </head>
   <body data-sveltekit-preload-data="hover">
     <div style="display: contents">%sveltekit.body%</div>
+
+    <!-- Google Website Translate (driven by the custom dropdown in the menu bar) -->
+    <div id="google_translate_element" aria-hidden="true"></div>
+    <script>
+      function googleTranslateElementInit() {
+        new google.translate.TranslateElement(
+          {
+            pageLanguage: 'ja',
+            includedLanguages: 'en,zh-CN,zh-TW,ko,es,fr,de,pt,ru,ar,hi,vi',
+            autoDisplay: false
+          },
+          'google_translate_element'
+        );
+      }
+    </script>
+    <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
   </body>
 </html>

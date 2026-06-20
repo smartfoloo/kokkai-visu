@@ -116,6 +116,44 @@ body {
   background: transparent;
 }
 
+/*
+ * Google Website Translate — keep its functional <select> (.goog-te-combo) in
+ * the DOM but hide every piece of Google's injected chrome so only our custom
+ * dropdown drives it.
+ *
+ * Our hidden gadget lives nested inside #google_translate_element (clipped).
+ * Google appends its top banner / language popup / tooltip as DIRECT children
+ * of <body> (modern build uses obfuscated `VIpgJd-*` classes, all carrying
+ * `.skiptranslate`), and pushes the page down via inline `top: 40px`.
+ */
+#google_translate_element {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+/* Banner / popup / tooltip overlays injected straight onto <body> */
+body > .skiptranslate,
+.goog-te-banner-frame,
+#goog-gt-tt,
+.goog-te-balloon-frame,
+.goog-tooltip,
+.goog-tooltip:hover {
+  display: none !important;
+}
+/* Undo the top offset Google applies to the body when a banner is shown */
+body {
+  top: 0 !important;
+  position: static !important;
+}
+/* Remove the yellow highlight Google paints over translated text */
+.goog-text-highlight {
+  background: none !important;
+  box-shadow: none !important;
+}
+
 @layer components {
   .pill {
     @apply inline-flex items-center gap-1.5 rounded-pill border border-line bg-surface px-3 py-1.5 text-sm text-ink-soft transition-colors;

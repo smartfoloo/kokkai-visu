@@ -7,7 +7,7 @@
 <button
   type="button"
   onclick={toggleTheme}
-  class="inline-flex h-7 w-7 items-center justify-center rounded-pill border border-line bg-surface text-ink-soft transition-colors hover:border-line-strong hover:text-ink focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/60"
+  class="inline-flex h-7 w-7 items-center justify-center rounded-pill bg-transparent text-ink-soft transition-colors hover:bg-surface-2 hover:text-ink focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/60"
   aria-label={isDark ? 'ライトモードに切り替え' : 'ダークモードに切り替え'}
   title={isDark ? 'ライトモード' : 'ダークモード'}
 >
