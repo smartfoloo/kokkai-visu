@@ -60,7 +60,7 @@
 
     <!-- macOS-style window -->
     <div
-      class="relative flex max-h-[86vh] w-full max-w-[760px] flex-col overflow-hidden rounded-xl border border-line bg-surface shadow-2xl"
+      class="relative flex max-h-[92vh] w-full max-w-[1040px] flex-col overflow-hidden rounded-xl border border-line bg-surface shadow-2xl"
       style="transform-origin: center center;"
       role="dialog"
       aria-modal="true"

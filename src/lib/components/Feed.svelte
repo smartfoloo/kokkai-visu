@@ -52,11 +52,10 @@
     <section>
       <div class="mb-1 flex items-baseline gap-2">
         <h2 class="text-lg font-bold text-ink">{g.heading}</h2>
-        <span class="rounded-pill bg-canvas-deep px-2 py-0.5 text-xs font-medium text-ink-soft tabular-nums">
+        <span class="rounded-badge bg-surface-2 px-2 py-0.5 text-xs font-medium text-ink-soft tabular-nums">
           {g.list.length}
         </span>
       </div>
-      {#if g.blurb}<p class="mb-4 text-sm text-ink-faint">{g.blurb}</p>{:else}<div class="mb-4"></div>{/if}
       <div class="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
         {#each g.list as bill (bill.id)}
           <SimpleCard {bill} {onselect} />

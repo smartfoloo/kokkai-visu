@@ -88,6 +88,8 @@ automatically.
 
 ## Stack
 
-SvelteKit (Svelte 5 runes) · Vite · Tailwind CSS · TypeScript. Design language adapted
-from [trackpolicy.org](https://trackpolicy.org/) — warm cream canvas, soft cards, blue
-data accent, amber heat tints.
+SvelteKit (Svelte 5 runes) · Vite · Tailwind CSS · TypeScript. Design language follows
+[Chakra UI v3](https://chakra-ui.com/) — its zinc gray scale, teal brand accent, semantic
+`bg`/`fg`/`border` tokens (light + dark), and card radii/shadows are reproduced as Tailwind
+tokens in `src/app.css`. Bill details open in an almost-fullscreen dialog with a tabbed
+layout (概要 / なぜ重要か / 変わること / 採決 / 経過 / 公式情報).

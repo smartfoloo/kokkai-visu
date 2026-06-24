@@ -135,13 +135,8 @@
     <Digest {bills} {meta} asOf={meta.updatedAt} onselect={select} onseeall={seeAll} />
   </main>
 {:else if view === 'simple'}
-  <!-- Full-width hero -->
-  <div class="pt-[calc(56px+1.5rem)] px-4 sm:px-6 lg:px-8">
-    <StatsHeader bills={bills} {meta} />
-  </div>
-
-  <!-- Constrained bills section -->
-  <main class="mx-auto max-w-[1100px] px-4 pb-6 mt-10">
+  <!-- Constrained bills section (no hero — kept to ダイジェスト only) -->
+  <main class="mx-auto max-w-[1100px] px-4 pb-6 pt-[calc(56px+1.5rem)]">
     <FilterMenu {meta} bind:filters {view} bind:groupBy {visibleParties} />
     <Feed bills={filtered} {meta} {groupBy} onselect={select} />
   </main>

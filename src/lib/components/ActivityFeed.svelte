@@ -47,7 +47,7 @@
       <div class="mb-3 flex items-baseline gap-2">
         <h2 class="text-lg font-bold text-ink">{formatDay(day.date)}</h2>
         <span
-          class="rounded-pill bg-canvas-deep px-2 py-0.5 text-xs font-medium tabular-nums text-ink-soft"
+          class="rounded-badge bg-surface-2 px-2 py-0.5 text-xs font-medium tabular-nums text-ink-soft"
         >
           {day.events.length}件
         </span>
@@ -58,7 +58,7 @@
           <button
             type="button"
             onclick={(ev) => onselect(e.bill, ev.currentTarget.getBoundingClientRect())}
-            class="flex w-full items-start gap-3 rounded-card border border-line bg-surface p-3.5 text-left shadow-card transition-all hover:-translate-y-0.5 hover:shadow-card-hover sm:p-4"
+            class="flex w-full items-start gap-3 rounded-card border border-line bg-surface p-3.5 text-left shadow-card transition-colors hover:border-line-strong hover:bg-surface-2 sm:p-4"
           >
             <span
               class="mt-1.5 h-2.5 w-2.5 shrink-0 rounded-full"
@@ -67,7 +67,7 @@
 
             <span class="min-w-0 flex-1">
               <span class="flex flex-wrap items-center gap-x-2 gap-y-1">
-                <span class="rounded-pill bg-canvas-deep px-2 py-0.5 text-xs font-medium text-ink-soft">
+                <span class="rounded-badge bg-surface-2 px-2 py-0.5 text-xs font-medium text-ink-soft">
                   {e.label}
                 </span>
                 {#if e.house}
@@ -76,7 +76,7 @@
                   </span>
                 {/if}
                 {#if isNew(e.date)}
-                  <span class="rounded-pill bg-amber-soft px-1.5 py-0.5 text-[10px] font-bold text-amber-ink">
+                  <span class="rounded-badge bg-amber-soft px-1.5 py-0.5 text-[10px] font-bold text-amber-ink">
                     NEW
                   </span>
                 {/if}

@@ -58,8 +58,11 @@ export default {
         ]
       },
       borderRadius: {
-        // Chakra Card recipe → borderRadius: "l3" = radii.md = 0.375rem
-        card: '0.375rem',
+        // Chakra semantic radii: l1 = 0.25rem (badges), l2 = 0.375rem (controls),
+        // l3 = 0.5rem (cards/menus/dialogs). `card` drives every card/menu surface.
+        badge: '0.25rem',
+        control: '0.375rem',
+        card: '0.5rem',
         pill: '9999px'
       },
       boxShadow: {

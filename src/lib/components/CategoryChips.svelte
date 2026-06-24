@@ -21,9 +21,9 @@
     type="button"
     onclick={() => (value = '')}
     aria-pressed={!value}
-    class="tag transition-colors {!value
-      ? 'bg-ink text-canvas'
-      : 'bg-surface-2 text-ink-soft hover:text-ink'}"
+    class="inline-flex items-center rounded-control px-2.5 py-1 text-xs font-medium transition-colors {!value
+      ? 'bg-accent text-on-accent'
+      : 'bg-surface-2 text-ink-soft hover:bg-line/50 hover:text-ink'}"
   >
     すべて
   </button>
@@ -32,9 +32,9 @@
       type="button"
       onclick={() => pick(c)}
       aria-pressed={value === c}
-      class="tag transition-colors {value === c
-        ? 'bg-ink text-canvas'
-        : 'bg-surface-2 text-ink-soft hover:text-ink'}"
+      class="inline-flex items-center rounded-control px-2.5 py-1 text-xs font-medium transition-colors {value === c
+        ? 'bg-accent text-on-accent'
+        : 'bg-surface-2 text-ink-soft hover:bg-line/50 hover:text-ink'}"
     >
       {c}
     </button>

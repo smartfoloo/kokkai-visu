@@ -23,7 +23,7 @@
 <button
   type="button"
   onclick={(e) => onselect(bill, e.currentTarget.getBoundingClientRect())}
-  class="group flex w-full shrink-0 flex-col gap-2 overflow-hidden rounded-card border p-3 text-left shadow-card transition-all hover:-translate-y-0.5 hover:shadow-card-hover {heatClass}"
+  class="group flex w-full shrink-0 flex-col gap-2 overflow-hidden rounded-card border p-3 text-left shadow-card transition-shadow hover:shadow-card-hover {heatClass}"
 >
   <div class="flex items-start justify-between gap-2">
     <span class="tag bg-surface-2 text-ink-soft">{bill.category}</span>

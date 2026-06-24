@@ -63,7 +63,7 @@
       type="search"
       bind:value={filters.q}
       placeholder="法案名で検索…"
-      class="pill w-44 bg-surface pl-8 focus:border-accent/40 focus:outline-none"
+      class="h-9 w-44 rounded-control border border-line bg-surface pl-8 pr-3 text-sm text-ink transition-colors placeholder:text-ink-faint focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
     />
   </div>
 
@@ -100,6 +100,7 @@
           { value: 'status', label: '状況' },
           { value: 'category', label: 'テーマ' }
         ]}
+        variant="plain"
         ariaLabel="まとめ方"
       />
     </div>

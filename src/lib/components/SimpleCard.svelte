@@ -25,7 +25,7 @@
 <button
   type="button"
   onclick={(e) => onselect(bill, e.currentTarget.getBoundingClientRect())}
-  class="flex w-full flex-col gap-3 rounded-card border border-line bg-surface p-4 text-left shadow-card transition-all hover:-translate-y-0.5 hover:shadow-card-hover sm:p-5"
+  class="flex w-full flex-col gap-3 rounded-card border border-line bg-surface p-4 text-left shadow-card transition-colors hover:border-line-strong hover:bg-surface-2 sm:p-5"
 >
   <div class="flex items-center justify-between gap-3">
     <span class="flex items-center gap-1.5 text-xs text-ink-faint">

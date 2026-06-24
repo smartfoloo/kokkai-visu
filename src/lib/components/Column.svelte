@@ -23,7 +23,7 @@
       {#if sub}<p class="text-[11px] uppercase tracking-wide text-ink-faint">{sub}</p>{/if}
     </div>
     <span
-      class="rounded-pill bg-canvas-deep px-2 py-0.5 text-xs font-medium tabular-nums text-ink-soft"
+      class="rounded-badge bg-surface-2 px-2 py-0.5 text-xs font-medium tabular-nums text-ink-soft"
     >
       {bills.length}
     </span>

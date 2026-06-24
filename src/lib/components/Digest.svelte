@@ -39,7 +39,7 @@
       <button
         type="button"
         onclick={(e) => onselect(f, e.currentTarget.getBoundingClientRect())}
-        class="flex w-full flex-col gap-3 rounded-card border border-line bg-surface p-5 text-left shadow-card transition-all hover:-translate-y-0.5 hover:shadow-card-hover sm:p-6"
+        class="flex w-full flex-col gap-3 rounded-card border border-line bg-surface p-5 text-left shadow-card transition-colors hover:border-line-strong hover:bg-surface-2 sm:p-6"
       >
         <span class="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-ink-faint">
           <span class="flex items-center gap-1.5">
@@ -71,18 +71,17 @@
     <section>
       <div class="mb-1 flex items-baseline gap-2">
         <h2 class="text-lg font-bold text-ink">{g.heading}</h2>
-        <span class="rounded-pill bg-canvas-deep px-2 py-0.5 text-xs font-medium text-ink-soft tabular-nums">
+        <span class="rounded-badge bg-surface-2 px-2 py-0.5 text-xs font-medium text-ink-soft tabular-nums">
           {g.bills.length}
         </span>
         <button
           type="button"
           onclick={() => onseeall(g.seeAll)}
-          class="ml-auto text-xs font-medium text-accent-deep hover:underline"
+          class="ml-auto inline-flex items-center gap-1 rounded-control px-2 py-1 text-xs font-medium text-accent-deep transition-colors hover:bg-accent-soft"
         >
           すべて見る →
         </button>
       </div>
-      <p class="mb-4 text-sm text-ink-faint">{g.blurb}</p>
       <div class="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
         {#each g.bills as bill (bill.id)}
           <SimpleCard {bill} {onselect} />

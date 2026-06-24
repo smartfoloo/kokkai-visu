@@ -75,7 +75,7 @@
         role="option"
         aria-selected={!value}
         onclick={() => choose('')}
-        class="flex w-full items-center gap-2 rounded-[9px] px-2.5 py-1.5 text-left text-sm text-ink-soft hover:bg-surface-2 {!value ? 'bg-surface-2' : ''}"
+        class="flex w-full items-center gap-2 rounded-control px-2.5 py-1.5 text-left text-sm text-ink-soft hover:bg-surface-2 {!value ? 'bg-surface-2' : ''}"
       >
         <span class="flex-1">{placeholder}</span>
         {#if !value}<span class="text-accent">✓</span>{/if}
@@ -86,7 +86,7 @@
           role="option"
           aria-selected={value === o.value}
           onclick={() => choose(o.value)}
-          class="flex w-full items-center gap-2 rounded-[9px] px-2.5 py-1.5 text-left text-sm text-ink hover:bg-surface-2 {value === o.value ? 'bg-accent-soft' : ''}"
+          class="flex w-full items-center gap-2 rounded-control px-2.5 py-1.5 text-left text-sm text-ink hover:bg-surface-2 {value === o.value ? 'bg-accent-soft' : ''}"
         >
           {#if o.color}
             <span class="h-2.5 w-2.5 shrink-0 rounded-full" style="background:{o.color}"></span>
